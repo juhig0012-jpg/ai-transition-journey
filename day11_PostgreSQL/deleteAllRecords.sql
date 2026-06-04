@@ -1,0 +1,3 @@
+DELETE FROM cars;
+//or
+TRUNCATE TABLE cars;

@@ -1,0 +1,2 @@
+ALTER TABLE cars
+ADD color VARCHAR(255);

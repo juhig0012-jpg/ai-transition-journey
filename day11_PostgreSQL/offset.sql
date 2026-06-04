@@ -1,0 +1,2 @@
+SELECT * FROM customers
+LIMIT 20 OFFSET 40;

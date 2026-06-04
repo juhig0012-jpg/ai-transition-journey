@@ -1,0 +1,2 @@
+SELECT * FROM cars
+WHERE model IS NOT NULL;
