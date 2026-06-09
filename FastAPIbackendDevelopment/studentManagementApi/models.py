@@ -1,0 +1,4 @@
+# Placeholder
+
+class StudentModel:
+    pass
