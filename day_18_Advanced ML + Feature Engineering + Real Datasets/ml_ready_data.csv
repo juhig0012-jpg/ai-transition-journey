@@ -1,0 +1,10 @@
+name,age,salary,city,city_encoded,name_encoded
+Rahul,25.0,50000,Delhi,2,5
+Amit,30.0,60000,Mumbai,4,0
+Ananya,22.0,70000,Bangalore,0,1
+Priya,28.0,61333,Chennai,1,4
+Vikram,35.0,80000,Mumbai,4,8
+Neha,27.0,55000,Delhi,2,3
+Rohit,,45000,Pune,5,6
+Sunita,32.0,61333,Mumbai,4,7
+Karan,29.0,72000,Hyderabad,3,2
