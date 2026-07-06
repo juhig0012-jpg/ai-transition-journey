@@ -1,28 +1,70 @@
-# Import Gemini library
-import google.generativeai as genai
+# ==========================================================
+# Import Gemini Client Library
+# ==========================================================
+from google import genai
 
 # Load environment variables
 from dotenv import load_dotenv
 
-# Used to read environment variables
+# Used to access environment variables
 import os
 
+# ==========================================================
 # Load .env file
+# ==========================================================
 load_dotenv()
 
-# Configure Gemini using API key
-genai.configure(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
+# ==========================================================
+# Read API Key from .env
+# ==========================================================
+api_key = os.getenv("GEMINI_API_KEY")
+print("API Key:", api_key)
 
-# Load Gemini model
-model = genai.GenerativeModel("gemini-2.5-flash")
+# Check whether API Key exists
+if not api_key:
+    raise ValueError("GEMINI_API_KEY not found in .env file")
 
-# Function to ask Gemini
+# ==========================================================
+# Create Gemini Client
+# ==========================================================
+client = genai.Client(api_key=api_key)
+
+# ==========================================================
+# Function to Ask Gemini
+# ==========================================================
 def ask_llm(question):
 
-    # Send question to Gemini
-    response = model.generate_content(question)
+    print("Inside ask_llm()")
+    print("Question:", question)
 
-    # Return AI answer
-    return response.text
+    try:
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=question
+        )
+
+        print(response)
+
+        return response.text
+
+    except Exception as e:
+
+        print("Gemini Error:", e)
+        return f"Error: {e}"
+
+    try:
+
+        # Send question to Gemini
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=question
+        )
+
+        # Return generated answer
+        return response.text
+
+    except Exception as e:
+
+        # Return error if anything goes wrong
+        return f"Error : {str(e)}"
